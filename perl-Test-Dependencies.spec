@@ -6,27 +6,28 @@
 %define	pdir	Test
 %define	pnam	Dependencies
 Summary:	Test::Dependencies - Ensure that your Makefile.PL specifies all module dependencies
-#Summary(pl):	
+Summary(pl.UTF-8):	Test::Dependencies - sprawdzanie czy Makefile.PL określa wszystkie zależności
 Name:		perl-Test-Dependencies
 Version:	0.11
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-authors/id/Z/ZE/ZEV/Test-Dependencies-0.11.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	f092f03973d5f5d1f8ef0e730f957771
+URL:		http://search.cpan.org/dist/Test-Dependencies/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(B::PerlReq)
-BuildRequires:	perl(File::Find::Rule)
-BuildRequires:	perl(IPC::Cmd)
-BuildRequires:	perl(Module::CoreList)
 BuildRequires:	perl(PerlReq::Utils)
-BuildRequires:	perl(Pod::Strip)
 BuildRequires:	perl(Test::Builder::Module)
-BuildRequires:	perl(YAML)
 BuildRequires:	perl(Test::Builder::Tester) >= 0.64
+BuildRequires:	perl-File-Find-Rule
+BuildRequires:	perl-IPC-Cmd
+BuildRequires:	perl-Module-CoreList
+BuildRequires:	perl-Pod-Strip
+BuildRequires:	perl-YAML
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,8 +36,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Makes sure that all of the modules that are 'use'd are listed in the
 Makefile.PL as dependencies.
 
-# %description -l pl
-# TODO
+%description -l pl.UTF-8
+Ten moduł sprawdza, czy wszystkie moduły, do których dany pakiet
+odwołuje się przez "use", są wymienione jako zależności w pliku
+Makefile.PL.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
