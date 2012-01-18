@@ -8,13 +8,13 @@
 Summary:	Test::Dependencies - Ensure that your Makefile.PL specifies all module dependencies
 Summary(pl.UTF-8):	Test::Dependencies - sprawdzanie czy Makefile.PL określa wszystkie zależności
 Name:		perl-Test-Dependencies
-Version:	0.11
+Version:	0.12
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	f092f03973d5f5d1f8ef0e730f957771
+# Source0-md5:	c6a2296a4dd1f023cb396832c4c2535c
 URL:		http://search.cpan.org/dist/Test-Dependencies/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
