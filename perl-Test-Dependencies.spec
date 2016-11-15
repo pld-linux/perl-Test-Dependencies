@@ -9,7 +9,7 @@ Summary:	Test::Dependencies - Ensure that your Makefile.PL specifies all module 
 Summary(pl.UTF-8):	Test::Dependencies - sprawdzanie czy Makefile.PL określa wszystkie zależności
 Name:		perl-Test-Dependencies
 Version:	0.23
-Release:	1
+Release:	2
 # same as perl 5
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -23,7 +23,7 @@ BuildRequires:	perl-devel >= 1:5.10.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(Test::Builder::Module)
-BuildRequires:	perl-File-Find-Rule
+BuildRequires:	perl-File-Find-Rule-Perl
 BuildRequires:	perl-IPC-Cmd
 BuildRequires:	perl-Module-CoreList
 BuildRequires:	perl-Test-Builder-Tester >= 0.64
