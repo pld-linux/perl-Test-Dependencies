@@ -8,26 +8,29 @@
 Summary:	Test::Dependencies - Ensure that your Makefile.PL specifies all module dependencies
 Summary(pl.UTF-8):	Test::Dependencies - sprawdzanie czy Makefile.PL określa wszystkie zależności
 Name:		perl-Test-Dependencies
-Version:	0.12
+Version:	0.23
 Release:	1
-# same as perl
+# same as perl 5
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	c6a2296a4dd1f023cb396832c4c2535c
+# Source0-md5:	49c7be85e155591fede4fb818462665f
+Patch0:		%{name}-undef.patch
 URL:		http://search.cpan.org/dist/Test-Dependencies/
-BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	perl-CPAN-Meta-Requirements >= 2.120_620
+BuildRequires:	perl-Pod-Strip
+BuildRequires:	perl-devel >= 1:5.10.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(B::PerlReq)
-BuildRequires:	perl(PerlReq::Utils)
 BuildRequires:	perl(Test::Builder::Module)
-BuildRequires:	perl(Test::Builder::Tester) >= 0.64
 BuildRequires:	perl-File-Find-Rule
 BuildRequires:	perl-IPC-Cmd
 BuildRequires:	perl-Module-CoreList
-BuildRequires:	perl-Pod-Strip
+BuildRequires:	perl-Test-Builder-Tester >= 0.64
+BuildRequires:	perl-Test-Needs
+BuildRequires:	perl-Test-Simple >= 1.30
 BuildRequires:	perl-YAML
+BuildRequires:	perl-rpm-build-perl
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -43,6 +46,7 @@ Makefile.PL.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL \
@@ -63,6 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README
-%{perl_vendorlib}/Test/*.pm
+%{perl_vendorlib}/Test/Dependencies.pm
 %{perl_vendorlib}/Test/Dependencies
-%{_mandir}/man3/*
+%{_mandir}/man3/Test::Dependencies*.3pm*

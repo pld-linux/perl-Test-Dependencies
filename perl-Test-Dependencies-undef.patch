@@ -1,0 +1,13 @@
+--- Test-Dependencies-0.23/Makefile.PL.orig	2016-11-15 21:24:48.868706625 +0100
++++ Test-Dependencies-0.23/Makefile.PL	2016-11-15 21:29:49.902036520 +0100
+@@ -79,7 +79,9 @@
+   require Module::Metadata;
+   my $mmd = Module::Metadata->new_from_module($module);
+   return undef if not $mmd;
+-  return $mmd->version($module) if not defined $version_or_range;
++  my $version = $mmd->version($module);
++  return "0.0" if not defined $version;
++  return $version if not defined $version_or_range;
+ 
+   require CPAN::Meta::Requirements;
+   my $req = CPAN::Meta::Requirements->new;
