@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_without	tests		# do not perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define	pdir	Test
 %define	pnam	Dependencies
 Summary:	Test::Dependencies - Ensure that your Makefile.PL specifies all module dependencies
